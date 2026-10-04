@@ -31,7 +31,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   try {
     const data = await fetchGraphQL<{ characters: { results: Character[] } }>(
       GET_CHARACTERS,
-      { name: name || '', status: status || '' }
+      { name: name || undefined, status: status || undefined }
     );
     characters = data.characters?.results || [];
   } catch (e: unknown) {

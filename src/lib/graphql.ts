@@ -21,7 +21,7 @@ export async function fetchGraphQL<T>(query: string, variables = {}): Promise<T>
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query, variables }),
-    cache: 'no-store',
+    next: { revalidate: 86400 },
   });
 
   if (res.status === 429) {
